@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.close-button {
+  background-color: blue;
+
+}
+
+
+.relative::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0; 
+  height: 1px; 
+  background-color: #2196F3;
+  transition: width 0.5s ease ; 
+}
+
+.relative:hover::before
+{
+  width: 100%;
+  background-color : #2196F3;
+
+  
+}
+.relative:focus::before
+{
+  width: 100%;
+  background-color : #2196F3;
+  
+
+}
+
+
+.link {
+  color: rgb(112, 112, 112);
+  transition: color 0.3s ease; 
+}
+.link:hover {
+  color: #000000; 
+}
+
+.link:focus {
+  color: #000000; 
+  outline: none; 
+  /* font-size: 1.1rem; */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  -webkit-scrollbar: none; /* Chrome and Safari */
+}
+
+/*  */
+
+/* .tab {
+  position: relative;
+  border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+
+  &:hover {
+    background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
+  }
+} */
+
+.active-tab {
+  background-color: white;
+  color: black;
+}
+
+.segmented-control .mantine-SegmentedControl-active[data-active='ALL'] {
+  background: linear-gradient(to right, purple, skyblue);
+}
+.segmented-control .mantine-SegmentedControl-active[data-active='PROD'] {
+  background-color: #8a2be2;
+}
+.segmented-control .mantine-SegmentedControl-active[data-active='UAT'] {
+  background-color: #4169E1;
+}
+.segmented-control .mantine-SegmentedControl-active[data-active='EN COURS'] {
+  background-color: #82CFE9;
+}
