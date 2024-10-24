@@ -13,8 +13,4 @@ export function extractName(fullName: string): string {
   return w;
 }
 
-declare global {
-  var prisma: PrismaClient;
-}
-
-export const prisma = global.prisma || new PrismaClient();
+export const prisma = new PrismaClient();

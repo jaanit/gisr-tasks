@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Login() {
   return (
     <>
-      {/* <div className="flex bg-[#f3f3f4] h-screen w-screen">
+      <div className="flex bg-[#f3f3f4] h-screen w-screen">
         <div className="md:w-2/3 p-2 w-full bg-[#6c95e0] md:bg-[#f3f3f4]  flex flex-col gap-8 items-center justify-center ">
           <Logo />
           <Card withBorder shadow="md" radius={"md"} p={"lg"} className="flex flex-col justify-center !w-full md:!w-[520px]">
@@ -15,9 +15,9 @@ export default function Login() {
           </Card>
         </div>
         <div className="hidden md:block w-2/3 w-full flex justify-center items-center">
-          <Image src="/bg.png" alt="cover" style={{ width: '100%', height: '100vh' }}  />
+          <img src="G" alt="cover" style={{ width: '100%', height: '100vh' }}  />
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
