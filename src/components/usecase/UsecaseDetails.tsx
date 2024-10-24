@@ -19,7 +19,7 @@ export default function UsecaseDetails({ u, tags }: { u: Usecase, tags: any}) {
             await updateUsecaseStatut(u, tags.statut);
         };
         updateStatut();
-    }, [tags.statut]);
+    }, [tags.statut, u]);
 
 return (
     <>

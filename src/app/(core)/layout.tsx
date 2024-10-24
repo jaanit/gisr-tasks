@@ -83,7 +83,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span>
                   <Blocks width={18} height={18} />
                 </span>
-                <span>Cas d'usages</span>
+                <span>Cas d usages</span>
               </div>
             </Link>
             <Link href={"/taches"}>

@@ -3,7 +3,9 @@ import UsecaseCard from "@/components/usecase/UsecaseCard";
 import UsecasePagination from "@/components/usecase/UsecasePagination";
 import Filtre from "@/components/usecaseDetails/Filtre";
 import { prisma } from "@/helpers/helpers";
+import { ModalsProvider } from "@mantine/modals";
 import { Filter } from "lucide-react";
+import Image from "next/image";
 
 
 export default async function Usecases({ searchParams }: { searchParams: { [key: string]: string | undefined } }) {
@@ -25,31 +27,33 @@ export default async function Usecases({ searchParams }: { searchParams: { [key:
 
   return (
     <>
-      <div className="p-2 mx-2 no-scrollbar flex items-center justify-between flex-col md:flex-row">
-        <h1 className="text-2xl font-bold undrline">Liste des cas d'usages</h1>
-        <AddUsecase />
-      </div>
-      <div className="mx-2">
-        <Filtre filter={filter} id={""} />
-      </div>
-      
-      {usecases.length > 0 ? (
-        <div className="p-2 grid md:grid-cols-2 xl:grid-cols-3 gap-2">
-          {usecases.map((u: any) => (
-            <UsecaseCard key={u.id} u={u} />
-          ))}
+      <ModalsProvider>
+        <div className="p-2 mx-2 no-scrollbar flex items-center justify-between flex-col md:flex-row">
+          <h1 className="text-2xl font-bold undrline">Liste des cas d usages</h1>
+          <AddUsecase />
         </div>
-      ) : (
-        <div className="flex justify-center items-center h-64">
-          <img src="/not_found.png" alt="Not found" />
+        <div className="mx-2">
+          <Filtre filter={filter} id={""} />
         </div>
-      )}
-  
-      {totalCount > 9 ? (
-        <UsecasePagination current={page} total={Math.ceil(totalCount / 9)} />
-      ) : (
-        ""
-      )}
+
+        {usecases.length > 0 ? (
+          <div className="p-2 grid md:grid-cols-2 xl:grid-cols-3 gap-2">
+            {usecases.map((u: any) => (
+              <UsecaseCard key={u.id} u={u} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-64">
+            <Image src="/not_found.png" alt="Not found" />
+          </div>
+        )}
+
+        {totalCount > 9 ? (
+          <UsecasePagination current={page} total={Math.ceil(totalCount / 9)} />
+        ) : (
+          ""
+        )}
+      </ModalsProvider>
     </>
-  );  
+  );
 }

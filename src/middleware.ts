@@ -7,9 +7,10 @@ export default async function middleware(req: NextRequest, event: NextFetchEvent
   const isAuthenticated = !!token;
 
   if (req.nextUrl.pathname.startsWith("/login") && isAuthenticated) {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
+    console.log("Token",token)
+    return NextResponse.redirect(new URL("/usecases", req.url));
   }
-
+  console.log("Token",token)
   const authMiddleware = withAuth({
     pages: {
       signIn: `/login`,

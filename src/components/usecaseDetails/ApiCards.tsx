@@ -15,25 +15,6 @@ import { prisma } from "@/helpers/helpers";
 
 export default async function ApiCards({ api, id }: { api: Api, id: string }) {
 
-  let consumer;
-
-  try {
-    consumer = await prisma.consumer.findUnique({
-      where: { id: api.id},
-      include: {
-        endpoints: true,
-        documents: true,
-        contacts: true,
-      },
-    });
-  } catch (error) {
-    console.error("Error fetching usecase", error);
-  }
-  const administrationNames = new Set([
-    ...consumer?.endpoints.map((endpoint: any) => endpoint.administration) || [],
-    ...consumer?.documents.map((document: any) => document.administration) || [],
-    ...consumer?.contacts.map((contact: any) => contact.administration) || [],
-  ]);
 
   return (
     <>
@@ -46,9 +27,6 @@ export default async function ApiCards({ api, id }: { api: Api, id: string }) {
           <div className="flex items-center space-x-2">
             <Badge className="group-hover:bg-white group-hover:text-black" color={api.statut === 'PROD' ? "#8a2be2" : api.statut === 'UAT' ? "#4169E1" : "#82CFE9"} size="md">
               {api.statut}
-            </Badge>
-            <Badge variant="outline" className="group-hover:!border-white group-hover:!text-white" color={"blue"}>
-              {administrationNames.size} Consommateurs
             </Badge>
           </div>
           <div className="text-sm ">

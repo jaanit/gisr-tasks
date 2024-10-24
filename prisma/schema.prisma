@@ -45,7 +45,7 @@ model Usecase {
 
 model Api {
   id             String     @id @default(cuid())
-  usecase        Usecase    @relation(fields: [usecaseId], references: [id])
+  usecase        Usecase    @relation(fields: [usecaseId], references: [id], onDelete: Cascade)
   usecaseId      String
   nom            String     @unique
   producteur     String

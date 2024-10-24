@@ -3,10 +3,10 @@ import { prisma } from "@/helpers/helpers";
 import AddApi from "@/components/usecaseDetails/AddApi";
 import ApiCards from "@/components/usecaseDetails/ApiCards";
 import ApiPagination from "@/components/usecaseDetails/ApiPagination";
-import DataManagement from "@/components/usecaseDetails/DataManagement";
 import Titled from "@/components/usecaseDetails/Titled";
 import { Title } from "@mantine/core";
 import Filtre from "@/components/usecaseDetails/Filtre";
+import { ModalsProvider } from "@mantine/modals";
 
 export default async function UsecasesDetail(props: any) {
     const cardTags = {
@@ -59,20 +59,22 @@ export default async function UsecasesDetail(props: any) {
 
     return (
         <>
-            <Titled usecases={usecases} nom={usecase.nom} />
-            <Filtre filter={filter} id={props.params.id} />
-            <div className="  gap-4 px-2">
-                <div id="section-1" className="col-span-2">
-                    <UsecaseDetails u={usecase} tags={cardTags}  />
-                    <div id="section-2" className="grid md:grid-cols-2 xl:grid-cols-2 gap-2 my-2">
-                        <AddApi id={props.params.id} />
-                        {usecase.apis.map((u: any) => (
-                            <ApiCards api={u} id={props.params.id} />
-                        ))}
+            <ModalsProvider>
+                <Titled usecases={usecases} nom={usecase.nom} />
+                <Filtre filter={filter} id={props.params.id} />
+                <div className="  gap-4 px-2">
+                    <div id="section-1" className="col-span-2">
+                        <UsecaseDetails u={usecase} tags={cardTags} />
+                        <div id="section-2" className="grid md:grid-cols-2 xl:grid-cols-2 gap-2 my-2">
+                            <AddApi id={props.params.id} />
+                            {usecase.apis.map((u: any) => (
+                                <ApiCards key={u.id} api={u} id={props.params.id} />
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-            {uscaseApis.length > 5 ? <ApiPagination current={page} total={Math.ceil(uscaseApis.length / 5)} id={props.params.id} filter={filter} /> : ""}
+                {uscaseApis.length > 5 ? <ApiPagination current={page} total={Math.ceil(uscaseApis.length / 5)} id={props.params.id} filter={filter} /> : ""}
+            </ModalsProvider>
         </>
     );
 }

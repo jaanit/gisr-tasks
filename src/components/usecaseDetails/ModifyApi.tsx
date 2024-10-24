@@ -6,7 +6,7 @@ import { IconEdit, IconExternalLink } from '@tabler/icons-react';
 import { DatePickerInput } from "@mantine/dates";
 import { useForm, zodResolver } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
-import { Edit, Ellipsis, Plus } from "lucide-react";
+import { Edit, Ellipsis, Plus, Trash2 } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import { useEffect, useState } from "react";
 import style from "styled-jsx/style";
@@ -15,6 +15,8 @@ import { Api } from "@prisma/client";
 import { modifyApi } from "@/actions/usecaseDetails/modifyApi";
 import { format } from "date-fns";
 import { stat } from "fs";
+import { ModalsProvider, modals } from '@mantine/modals';
+import { deleteApi } from "@/actions/usecaseDetails/deleteApi";
 
 export default function ModifyApi({ api }: { api: Api }) {
     const [opened, { open, close }] = useDisclosure(false);
@@ -43,7 +45,7 @@ export default function ModifyApi({ api }: { api: Api }) {
             date_uat: api.date_uat,
             date_prod: api.date_prod,
         });
-    }, [api]);
+    }, [api, form]);
     const submitModifyApi = async (values: z.infer<typeof ApiSchema>) => {
         setLoading(true);
         if (!values.date_creation) {
@@ -75,6 +77,21 @@ export default function ModifyApi({ api }: { api: Api }) {
         setIsModify(true);
     }
 
+    const openModal = async (id: string) => modals.openConfirmModal({
+        title: <Title order={4}> Confirmation de la supression</Title>,
+        centered: true,
+        children: (
+            <span>
+                Etes-vous sûr(e) de vouloir supprimer cet élément ?
+            </span>
+        ),
+        labels: { confirm: 'Oui', cancel: "Non" },
+        confirmProps: { color: 'blue' },
+        onConfirm: async () => {
+            await deleteApi(id)
+        },
+    });
+
     return (
         <>
             <Menu width={200} >
@@ -103,6 +120,19 @@ export default function ModifyApi({ api }: { api: Api }) {
                     >
                         Modify Api
                     </Menu.Item>
+
+                    <Menu.Item
+                    onClick={(event) => {
+                        openModal(api.id)
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }}
+                    leftSection = {<Trash2 width={14} height={14} />}
+
+                        > 
+                        Delete
+                    </Menu.Item>
+
                 </Menu.Dropdown>
             </Menu>
             <Modal
@@ -177,9 +207,7 @@ export default function ModifyApi({ api }: { api: Api }) {
                         <div>
                             <Button
                                 onClick={(event) => {
-
                                     event.stopPropagation();
-
                                 }}
                                 type="submit" loading={loading} loaderProps={{ type: "dots" }} color={"blue"} fullWidth disabled={!isModify}>
                                 Modifier

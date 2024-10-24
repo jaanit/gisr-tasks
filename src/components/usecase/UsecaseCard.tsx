@@ -5,6 +5,7 @@ import { z } from "zod";
 import { format } from "date-fns";
 import { Usecase } from "@prisma/client";
 import { prisma } from "@/helpers/helpers";
+import ModifyUsecase from "./ModifyUsecase";
 
 export default async function UsecaseCard({ u }: { u: Usecase }) {
 
@@ -22,6 +23,7 @@ export default async function UsecaseCard({ u }: { u: Usecase }) {
             <Badge className="ml-auto group-hover:bg-white group-hover:text-black" color={u.statut === 'PROD' ? "#8a2be2" : u.statut === 'UAT' ? "#4169E1" : "#82CFE9"} size="md">
               {u.statut}
             </Badge>
+            <ModifyUsecase u = {u} />
           </div>
           <h2 className="uppercase font-bold text-lg tracking-tight">{u.nom}</h2>
           <div className="flex  justify-between text-xs mt-1">
@@ -40,9 +42,6 @@ export default async function UsecaseCard({ u }: { u: Usecase }) {
             </Text>
           </div>
           <div className="mt-5 flex items-center space-x-2">
-            <Badge variant="outline" className="group-hover:!border-white group-hover:!text-white" color={"blue"}>
-             Producteurs
-            </Badge>
           </div>
         </Card>
       </Link>

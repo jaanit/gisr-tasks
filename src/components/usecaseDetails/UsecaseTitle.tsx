@@ -26,7 +26,7 @@ export default function UseCaseTitle({ usecases, nom }: { usecases: any, nom: an
         <>
             <div className="flex flex-col mb-2 px-2">
                 <div className="flex items-center gap-2 ">
-                    <Title order={3} className="mb-2 font-bold underline">Cas d'usage:</Title>
+                    <Title order={3} className="mb-2 font-bold underline">Cas d usage:</Title>
                     <Select className="mb-3 " w={225} h={45} size="md" my={4} data={usecases.map((u: { nom: string | null }) => u.nom)} defaultValue={usecases.find((u: { nom: string | null }) => u.nom === nom)?.nom}
                         onChange={(value) => {
                             history.push('/usecases/' + usecases.find((u: { nom: string | null }) => u.nom === value)?.id)
