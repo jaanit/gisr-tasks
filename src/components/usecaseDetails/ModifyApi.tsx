@@ -45,7 +45,7 @@ export default function ModifyApi({ api }: { api: Api }) {
             date_uat: api.date_uat,
             date_prod: api.date_prod,
         });
-    }, [api, form]);
+    }, [api]);
     const submitModifyApi = async (values: z.infer<typeof ApiSchema>) => {
         setLoading(true);
         if (!values.date_creation) {

@@ -41,7 +41,7 @@ export default function ModifyUsecase({ u }: { u: Usecase }) {
       date_mep: u.date_mep,
       statut: u.statut,
     });
-  }, [u, form]);
+  }, [u]);
 
   const openModal = async (id: string) => modals.openConfirmModal({
     title: <Title order={4}> Confirmation de la supression</Title>,

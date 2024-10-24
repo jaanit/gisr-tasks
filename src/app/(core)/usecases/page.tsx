@@ -44,7 +44,7 @@ export default async function Usecases({ searchParams }: { searchParams: { [key:
           </div>
         ) : (
           <div className="flex justify-center items-center h-64">
-            <Image src="/not_found.png" alt="Not found" />
+            <img src="/not_found.png" alt="Not found" />
           </div>
         )}
 
