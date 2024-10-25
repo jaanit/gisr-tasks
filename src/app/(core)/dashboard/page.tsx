@@ -7,6 +7,7 @@ export default async function Dashboard() {
 
   return (
     <>
+     <div>SOON...</div>
     </>
   );
 }

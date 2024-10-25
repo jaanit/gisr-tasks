@@ -1,3 +1,5 @@
+"use server";
+
 import UsecaseDetails from "@/components/usecase/UsecaseDetails";
 import { prisma } from "@/helpers/helpers";
 import AddApi from "@/components/usecaseDetails/AddApi";

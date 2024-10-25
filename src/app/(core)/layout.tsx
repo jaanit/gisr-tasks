@@ -71,7 +71,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span>
                   <BarChartBig width={18} height={18} />
                 </span>
-                <span>Tableau de board</span>
+                <span>Dashboard</span>
               </div>
             </Link>
             <Link href={"/usecases"}>
@@ -81,7 +81,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span>
                   <Blocks width={18} height={18} />
                 </span>
-                <span>Cas d usages</span>
+                <span>Usecases</span>
               </div>
             </Link>
             <Link href={"/taches"}>
@@ -89,7 +89,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span>
                   <ListTodo width={18} height={18} />
                 </span>
-                <span>Tâches</span>
+                <span>Tasks</span>
               </div>
             </Link>
           </div>

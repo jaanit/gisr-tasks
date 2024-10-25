@@ -83,7 +83,7 @@ export default function AddApi({ id}: { id: string}) {
                         messageDateProd: "",
                     });
                 }}
-                title={<Title order={2}>Ajouter API </Title>}
+                title={<Title order={2}>Add Apis </Title>}
             >
                     <form onSubmit={form.onSubmit((values) => submitAddUsecase(values))} className="mt-4 space-y-4">
                         <div>

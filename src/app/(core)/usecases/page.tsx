@@ -1,3 +1,5 @@
+"use server";
+
 import AddUsecase from "@/components/usecase/AddUsecase";
 import UsecaseCard from "@/components/usecase/UsecaseCard";
 import UsecasePagination from "@/components/usecase/UsecasePagination";
@@ -29,7 +31,7 @@ export default async function Usecases({ searchParams }: { searchParams: { [key:
     <>
       <ModalsProvider>
         <div className="p-2 mx-2 no-scrollbar flex items-center justify-between flex-col md:flex-row">
-          <h1 className="text-2xl font-bold undrline">Liste des cas d usages</h1>
+          <h1 className="text-2xl font-bold undrline">List of usecases</h1>
           <AddUsecase />
         </div>
         <div className="mx-2">

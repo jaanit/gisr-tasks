@@ -48,7 +48,7 @@ export default function AddUsecase() {
     <>
 
       <Button leftSection={<Plus width={18} height={18} />} onClick={open} color={"blue"}>
-        Ajouter un cas d usage 
+        Add Usecase 
       </Button>
       <Modal
         closeButtonProps={{ bg: "blue", color: "white", size: "sm", style: { color: 'white' } }}
@@ -62,7 +62,7 @@ export default function AddUsecase() {
             message: "",
           });
         }}
-        title={<Title order={2}>Ajouter un cas d usage </Title>}
+        title={<Title order={2}>Add Usecase </Title>}
       >
         <ScrollArea h={410} scrollbarSize={4} offsetScrollbars scrollHideDelay={8000}>
           <form onSubmit={form.onSubmit((values) => submitAddUsecase(values))} className="mt-4 space-y-4">
