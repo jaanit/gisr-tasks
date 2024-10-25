@@ -1,17 +1,32 @@
-# Install dependencies only when needed
-FROM node:16-alpine AS deps
-WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+# Use the official Node.js image as the base image
+FROM node:lts
 
-# Rebuild the source code only when needed
-FROM node:16-alpine AS builder
+# Set working directory
 WORKDIR /app
-COPY . .
+
+# Copy package.json and package-lock.json to install dependencies
+COPY package*.json ./
+# COPY prisma ./prisma
+# Install dependencies
 RUN npm install --legacy-peer-deps
 
-# Production image, copy all the files and run the app
-FROM node:16-alpine AS runner
-WORKDIR /app
-COPY --from=builder /app ./
-CMD ["npm", "run", "start"]
+# Copy the Prisma schema file
+
+
+# Copy the .env file
+# COPY .env ./
+
+# Generate Prisma client
+
+
+# Run migrations
+
+# Copy the rest of the application code
+COPY . .
+RUN npx prisma generate
+# Expose the port Next.js runs on
+EXPOSE 3000
+
+# Run the app in development mode
+CMD ["npm", "run", "dev"]
+

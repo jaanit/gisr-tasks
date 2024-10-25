@@ -8,29 +8,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Filtre({ filter, id }: { filter: string, id: string }) {
-    console.log('Filtre ....... ');
     const [activePage, setPage] = useState(filter);
     const router = useRouter();
     return (
         <>
-            {/* <Group px={4} style={{ marginBottom: 5 }} >
-                <SegmentedControl
-                    radius = "lg"
-                    size = "xs"
-                    value={filter}
-                    color={filter === 'PROD' ? "#8a2be2" : filter === 'UAT' ? "#4169E1" : filter == 'EN COURS' ?  "#82CFE9" : filter=='ALL' ? "black" : "black"}
-                    onChange={(value) => {
-                        setPage(value);
-                        router.push(`${id}?filter=${value}`);
-                    }}
-                    data={[
-                        { label: 'ALL'  , value: 'ALL' },
-                        { label: 'PROD', value: 'PROD' },
-                        { label: 'UAT', value: 'UAT' },
-                        { label: 'EN COURS', value: 'EN COURS' },
-                    ]}
-                />
-            </Group> */}
             <div className="flex justify-start p-2">
                 <Menu>
                     <Menu.Target>

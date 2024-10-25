@@ -30,7 +30,7 @@ export default function LoginForm() {
       redirect: false,
     });
     if (res?.ok) {
-      return router.push("/dashboard");
+      return router.push("/usecases");
     } else {
       setLoading(false);
       setNoError(false);

@@ -15,7 +15,7 @@ export default function Login() {
           </Card>
         </div>
         <div className="hidden md:block w-2/3 w-full flex justify-center items-center">
-          <img src="G" alt="cover" style={{ width: '100%', height: '100vh' }}  />
+          <img src="bg.png" alt="cover" style={{ width: '100%', height: '100vh' }}  />
         </div>
       </div>
     </>

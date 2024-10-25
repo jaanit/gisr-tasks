@@ -12,7 +12,6 @@ import { useState } from "react";
 import { z } from "zod";
 
 export default function AddUsecase() {
-  console.log('AddUsecase ....... ');
   const [opened, { open, close }] = useDisclosure(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ isError: true, message: "" });

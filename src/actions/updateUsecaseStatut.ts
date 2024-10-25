@@ -19,7 +19,6 @@ export const updateUsecaseStatut = async (u: Usecase, statut: string) => {
         });
     }
     catch (e) {
-        console.log(e);
         return false;
     }
     revalidatePath("/usecases");

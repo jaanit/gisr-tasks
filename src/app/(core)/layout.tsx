@@ -23,8 +23,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   
   useEffect(() => {
-    console.log("pathname --------- ", pathname , active)
-      // console.log(active + ' ' + pathname)
       if (active == '1' && !pathname.includes('/usecase') || active == '3' && !pathname.includes('/taches')  || active == '2' && !pathname.includes('/dashboard')) {
         setWaiting(true)
         

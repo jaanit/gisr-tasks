@@ -49,10 +49,8 @@ export default function AddApi({ id}: { id: string}) {
         setLoading(false);
         if (res.isError == false) {
             setError(res);
-            console.log("API added faillllled" );
 
         } else {
-            console.log("API added successfully" );
             setNotification({ isOpen: true, message: "API added successfully" });
             close();
             form.reset();

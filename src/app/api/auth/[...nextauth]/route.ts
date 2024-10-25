@@ -1,12 +1,9 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
 import { AuthOptions } from "next-auth";
 import { Loginschema } from "@/schema/schema";
-
-const prisma = new PrismaClient();
+import { PrismaAdapter, prisma } from "@/helpers/helpers";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -14,17 +11,16 @@ export const authOptions: AuthOptions = {
     CredentialsProvider({
       name: "credentials",
       credentials: {
-        password: {},
-        email: {},
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         const res = Loginschema.safeParse(credentials);
 
         if (res.success === false) return null;
+
         const user = await prisma.user.findUnique({
-          where: {
-            email: credentials?.email,
-          },
+          where: { email: credentials?.email },
         });
 
         if (!user) {
@@ -35,10 +31,6 @@ export const authOptions: AuthOptions = {
         if (!passwordIsMatch) {
           return null;
         }
-
-        // if (user.role === "manager") {
-        //   return user;
-        // }
 
         return user;
       },
