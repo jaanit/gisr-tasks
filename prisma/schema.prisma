@@ -23,7 +23,7 @@ model User {
   name          String?
   email         String?    @unique
   password      String
-  emailVerified DateTime?
+  emailVerified DateTime?  
   role          String     @default("manager")
   mc_token      String?    @default(dbgenerated("null"))
   createdAt     DateTime   @default(now())

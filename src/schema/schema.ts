@@ -1,8 +1,16 @@
+
+
 import { z } from "zod";
 
 export const Loginschema = z.object({
   email: z.string().email({ message: "Email invalide" }),
   password: z.string().min(1, { message: "Mot de passe requis" }),
+});
+
+export const UserSchema = z.object({
+  name: z.string().min(1, { message: "Nom requis" }),
+  email: z.string().email({ message: "Email invalide" }),
+  password: z.string().min(6, { message: "Le mot de passe doit comporter au moins 6 caractères" }),
 });
 
 export const UsecaseSchema = z.object({
