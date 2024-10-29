@@ -62,21 +62,38 @@ export default async function UsecasesDetail(props: any) {
     return (
         <>
             <ModalsProvider>
-                <Titled usecases={usecases} nom={usecase.nom} />
-                <Filtre filter={filter} id={props.params.id} />
-                <div className="  gap-4 px-2">
-                    <div id="section-1" className="col-span-2">
-                        <UsecaseDetails u={usecase} tags={cardTags} />
-                        <div id="section-2" className="grid md:grid-cols-2 xl:grid-cols-2 gap-2 my-2">
+                <div className="container mx-auto p-4 mt-6 space-y-6 bg-gray-50 rounded-lg shadow-lg">
+                    <header className="flex justify-between items-center p-4 bg-gray-100 rounded-lg shadow-sm">
+                        <Titled usecases={usecases} nom={usecase.nom} />
+                        <Filtre filter={filter} id={props.params.id} />
+                    </header>
+
+                    <main className="space-y-4">
+                        <section id="section-1" className="p-4 bg-white rounded-lg shadow-sm">
+                            <UsecaseDetails u={usecase} tags={cardTags} />
+                        </section>
+
+                        <section id="section-2" className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <AddApi id={props.params.id} />
                             {usecase.apis.map((u: any) => (
                                 <ApiCards key={u.id} api={u} id={props.params.id} />
                             ))}
-                        </div>
-                    </div>
+                        </section>
+
+                        {uscaseApis.length > 5 && (
+                            <div className="flex justify-center">
+                                <ApiPagination
+                                    current={page}
+                                    total={Math.ceil(uscaseApis.length / 5)}
+                                    id={props.params.id}
+                                    filter={filter}
+                                />
+                            </div>
+                        )}
+                    </main>
                 </div>
-                {uscaseApis.length > 5 ? <ApiPagination current={page} total={Math.ceil(uscaseApis.length / 5)} id={props.params.id} filter={filter} /> : ""}
             </ModalsProvider>
         </>
+
     );
 }

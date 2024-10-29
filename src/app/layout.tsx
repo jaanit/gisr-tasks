@@ -5,7 +5,7 @@ import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
 import { createTheme, MantineProvider } from "@mantine/core";
 import ProviderApp from "@/context/providerApp";
-
+import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,12 +23,21 @@ export default function RootLayout({
   });
 
   return (
+
     <html lang="en">
       <body className={inter.className}>
-        <MantineProvider  theme={theme}>
-          <ProviderApp>{children}</ProviderApp>
-        </MantineProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MantineProvider theme={theme}>
+            <ProviderApp>{children}</ProviderApp>
+          </MantineProvider>
+        </ThemeProvider>
       </body>
     </html>
+
   );
 }

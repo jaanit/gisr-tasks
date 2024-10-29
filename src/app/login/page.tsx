@@ -16,7 +16,7 @@ export default function Login() {
                 <h1 className="text-2xl font-bold">Login</h1>
                 <LoginForm />
               </Card>
-              <h1 className="text-sm font-bold">Don't have an account <Link className= "text-blue-500" href = "/signup" > Signup</Link></h1>
+              <h1 className="text-sm font-bold">Don't have an account ? <Link className= "mx-1 text-blue-500" href = "/signup" > Signup</Link></h1>
             </div>
             <div className="hidden md:block w-2/3 w-full flex justify-center items-center">
               <img src="bg.png" alt="cover" style={{ width: '100%', height: '100vh' }}  />

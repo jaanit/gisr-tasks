@@ -14,6 +14,7 @@ import { format } from "date-fns";
 import { Ellipsis, Pencil, Plus, Trash2 } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import { use, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 
 export default function ModifyUsecase({ u }: { u: Usecase }) {
@@ -21,6 +22,7 @@ export default function ModifyUsecase({ u }: { u: Usecase }) {
   const [opened, { open, close }] = useDisclosure(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ isError: true, message: "" });
+const route = useRouter()
 
   const form = useForm({
     initialValues: {
@@ -54,7 +56,10 @@ export default function ModifyUsecase({ u }: { u: Usecase }) {
     labels: { confirm: 'Oui', cancel: "Non" },
     confirmProps: { color: 'blue' },
     onConfirm: async () => {
-        await deleteUsecase(id)
+        const res = await deleteUsecase(id)
+        if (res.isError == false) {
+          return route.push("/usecases");
+        }
     },
 });
 

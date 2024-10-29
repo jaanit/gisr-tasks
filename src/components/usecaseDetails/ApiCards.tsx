@@ -18,7 +18,7 @@ export default async function ApiCards({ api, id }: { api: Api, id: string }) {
 
   return (
     <>
-      <Card withBorder shadow="xs" p={"lg"} radius={"md"} className="gap-2 hover:!bg-violet-600 transition-all hover:!text-white group  min-h-[220px] max-h-[220px] flex flex-col justify-center w-full">
+      <Card withBorder shadow="xs" p={"lg"} radius={"md"} className="gap-2 hover:!bg-violet-600 transition-all hover:!text-white group  min-h-[220px] max-h-[220px] flex flex-col justify-center w-full bg-rose-200">
         <div className="ml-auto">
           <ModifyApi api={api} />
         </div>

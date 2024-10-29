@@ -25,7 +25,7 @@ return (
     <>
         <Card withBorder shadow="xs" radius={"md"} className="group hover:!bg-violet-600 transition-all hover:!text-white min-h-[200px] flex flex-col justify-center w-[100%]">
             <div className="ml-auto flex flex-row items-center gap-1">
-                <Badge className="ml-auto group-hover:bg-white group-hover:text-black" color={u.statut === 'PROD' ? "#8a2be2" : u.statut === 'UAT' ? "#4169E1" : "#82CFE9"} size="md">
+                <Badge className="ml-auto group-hover:bg-we group-hover:text-black" color={u.statut === 'PROD' ? "#8a2be2" : u.statut === 'UAT' ? "#4169E1" : "#82CFE9"} size="md">
                     {u.statut}
                 </Badge>
                 <ModifyUsecase u={u} />

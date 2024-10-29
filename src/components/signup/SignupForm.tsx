@@ -22,7 +22,7 @@ export default function Signup() {
       password: "",
       name: "",
     },
-    validate: zodResolver(Loginschema),
+    validate: zodResolver(UserSchema),
   });
 
   const submitLogin = async (values: z.infer<typeof UserSchema>) => {
@@ -61,6 +61,9 @@ export default function Signup() {
         <div>
           <PasswordInput label="Mot de passe" withAsterisk placeholder="Mot de passe" {...form.getInputProps("password")} />
         </div>
+        {/* <div>
+          <PasswordInput label="Comfirm password" withAsterisk placeholder="Comfirm password" {...form.getInputProps("password")} />
+        </div> */}
         <div>
           <Button type="submit" loading={loading} loaderProps={{ type: "dots" }} color={"blue"} fullWidth>
             Singup

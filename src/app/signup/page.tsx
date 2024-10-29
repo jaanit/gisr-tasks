@@ -1,6 +1,6 @@
 import Logo from "@/components/Logo";
 import LoginForm from "@/components/login/LoginForm";
-import Signup from "@/components/signup/Signup";
+import Signup from "@/components/signup/SignupForm";
 import { Card } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +15,7 @@ export default function Login() {
             <h1 className="text-2xl font-bold">Login</h1>
             <Signup />
           </Card>
-          <h1 className="text-sm font-bold">Already have an acount? <Link className= "text-blue-500" href = "/login" > Login</Link></h1>
+          <h1 className="text-sm font-bold">Already have an acount? <Link className= "mx-1 text-blue-500" href = "/login" > Login</Link></h1>
         </div>
         <div className="hidden md:block w-2/3 w-full flex justify-center items-center">
           <img src="bg.png" alt="cover" style={{ width: '100%', height: '100vh' }}  />

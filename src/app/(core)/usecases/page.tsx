@@ -32,12 +32,15 @@ export default async function Usecases({ searchParams }: { searchParams: { [key:
       <ModalsProvider>
         <div className="p-2 mx-2 no-scrollbar flex items-center justify-between flex-col md:flex-row">
           <h1 className="text-2xl font-bold undrline">List of usecases</h1>
-          <AddUsecase />
-        </div>
-        <div className="mx-2">
+        
+          <div className="mx-2 flex items-center">
           <Filtre filter={filter} id={""} />
+          <AddUsecase />
+          
         </div>
 
+        </div>
+       
         {usecases.length > 0 ? (
           <div className="p-2 grid md:grid-cols-2 xl:grid-cols-3 gap-2">
             {usecases.map((u: any) => (
