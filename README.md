@@ -15,8 +15,13 @@ GISR Tasks is a web application that manages the integration process of data . B
 
 # Configure Environment Variables
 ```plaintext
+
+# Database configuration
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=mydb
+DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
 NEXTAUTH_SECRET=be605dd0bfe0a2fb15c7ba13fbdefd62a61c0f58614b2f23fe71dd367d846506
-DATABASE_URL="postgresql://postgres:postgres@db:5432/mydb"
 ```
 # Run with Docker
 ```plaintext
